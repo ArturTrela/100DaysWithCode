@@ -12,5 +12,5 @@ petName = input()
 
 # Band name line creator below
 print('Your Band name could be :')
-bandName = cityName+"'s " + petName + " " + "band"
+bandName = cityName+"'s " + petName + " " + "Band"
 print(bandName)
