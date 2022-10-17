@@ -10,7 +10,7 @@ percent = int(input('What percent tip would you like to give? 10,12, or 15 '))
 # Math part of code
 
 tip = bill % percent
-to_pay = (bill + tip) / people
+to_pay =round((bill + tip) / people, 2)
 
 # Return value for user code
 
