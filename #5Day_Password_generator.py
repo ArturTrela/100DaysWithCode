@@ -13,7 +13,7 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 # e.g. 4 letter, 2 symbol, 2 number = JduE&!91
 
 password_long = nr_letters + nr_symbols + nr_numbers
-password = []
+password = [] 
 
 for char in range(0, password_long):
     if char in range(0, nr_letters):
