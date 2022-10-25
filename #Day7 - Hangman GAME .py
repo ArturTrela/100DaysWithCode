@@ -1,3 +1,12 @@
+title =''' _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/             
+'''
 import random
 life0= '''
       _______
@@ -53,15 +62,35 @@ life5 = '''
    _______
      |/      |
      |      (_)
+     |       I
+     |       
+     |      
+     |
+_____|___
+'''
+life6 = '''
+   _______
+     |/      |
+     |      (_)
+     |      
+     |       
+     |       
+     |
+_____|___
+'''
+life7 = '''
+   _______
+     |/      |
+     |      
      |      
      |       
      |      
      |
 _____|___
 '''
-life6 =
 letters =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+print(title)
 word=str(input("Tell me any word: ... \n")).lower()
 long_word = len(word)
 word_to_check = []
@@ -69,4 +98,4 @@ word_to_check = []
 for x in range(0,long_word):
     word_to_check.append(word[x])
 
-your_letter
+your_letter =""
