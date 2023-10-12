@@ -21,6 +21,7 @@ positionB_likes = 0
 print(logoHLG)
 data = game_data.data
 
+print(positionB)
 
 def creator_playerA(data):
     # pointer for table creating
@@ -29,7 +30,7 @@ def creator_playerA(data):
     for values in data[pointerA].values():
         tempA.append(values)
 
-    positionA = f'A: {tempA[0]} as {tempA[2]} from {tempA[3]}'
+    positionA = f' {tempA[0]} as {tempA[2]} from {tempA[3]}'
     positionA_likes = tempA[1]
     creating_dataA = [positionA, positionA_likes]
     return creating_dataA
@@ -42,12 +43,12 @@ def creator_playerB(data):
     for values in data[pointerB].values():
         tempB.append(values)
 
-    positionB = f'B: {tempB[0]} as {tempB[2]} from {tempB[3]}'
+    positionB = f' {tempB[0]} as {tempB[2]} from {tempB[3]}'
     positionB_likes = tempB[1]
     creating_dataB = [positionB, positionB_likes]
     return creating_dataB
 
-
+#
 packageA = creator_playerA(data)
 positionA = packageA[0]
 positionA_likes = packageA[1]
@@ -55,44 +56,45 @@ positionA_likes = packageA[1]
 packageB = creator_playerB(data)
 positionB = packageB[0]
 positionB_likes = packageB[1]
+print(f'A:{positionA}\n {vs} \n B: {positionB}')
 
-
-def game(positionA, positionB, data):
-
-    condition = 1
+def game(data):
     points_cnt = 0
-    while condition == 1:
+    packageA = creator_playerA(data)
+    positionA = packageA[0]
+    positionA_likes = packageA[1]
+
+
+    while True:
+        packageB = creator_playerB(data)
         positionB = packageB[0]
-        print(f'{positionA}\n {vs} \n {positionB}')
-        print('________________________________________________________________________________')
+        def show_enemies():
+            print(f'A:{positionA}\n {vs} \n B: {positionB}')
+            print('________________________________________________________________________________')
+        print(f'A: {positionA_likes}k likes')
+        print(f'B: {positionB_likes}k likes')
 
-        user_choice = str(input('Please Type who has a more followers : "a" or "b" \n'))
-        if user_choice == "a":
-            print(f'Your choice is {user_choice}-> {positionA}')
-            if positionA_likes > positionB_likes:
-                print('TRUE')
-                points_cnt += 1
-                print(f'Your actual score is :{points_cnt}')
-                positionA = positionB
-                positionB = packageB[0]
 
-        elif user_choice == "b":
-            print(f'Your choice is {user_choice}->{positionB}')
-            if positionB_likes > positionA_likes:
-                print('TRUE')
-                points_cnt += 1
-                print(f'Your actual score is :{points_cnt}')
-            else:
-                print('FALSE')
-                return points_cnt
+        user_choice = str(input('Please Type who has a more followers : "a" or "b" \n')).lower()
+        if user_choice == "a" and positionA_likes > positionB_likes or user_choice =="b" and positionB_likes > positionA_likes:
+
+            print('TRUE')
+            points_cnt += 1
+            print(f'Your actual score is :{points_cnt}')
+            positionA = positionB
+            packageB =creator_playerB(data)
+            print(positionB)
+
         else:
-            print('Something went wrong ... Please type correct position ')
-            return
+            print('FALSE')
+            return points_cnt
+        show_enemies()
+    else:
+        print('Something went wrong ... Please type correct position ')
+    clear()
 
-        print(f'{positionA_likes}k likes')
-        print(f'{positionB_likes}k likes')
 
 
-game_score = game(positionA, positionB, data)
-# game()
+
+game_score = game(data)
 print(f'Game over. Your Score is : {game_score}')
