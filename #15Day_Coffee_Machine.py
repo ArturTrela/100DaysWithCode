@@ -48,6 +48,8 @@
 # Money: $2.5
 # b. Once all resources have been deducted, tell the user “Here is your latte. Enjoy!”. If
 # latte was their choice of drink.
+from turtle import clear
+
 MENU = {
     "espresso": {
         "ingredients": {
@@ -84,7 +86,7 @@ powerOn = 1
    The prompt should show every time action has completed, e.g. once the drink is dispensed.
    The prompt should show again to serve the next customer."""
 
-request = input("What would you like? (espresso -Type 'e'/latte - Type 'l' /cappuccino - Type - 'c')\n ").lower()
+
 
 
 def report():
@@ -95,31 +97,34 @@ def report():
     money = resources["money"]
     print(f'In machine remaining ... \nWater: {water} ml\nMilk: {milk} ml\nCoffee: {coffee} g\nMoney: $ {money}')
 
+while powerOn:
+    request = input("What would you like? (espresso -Type 'e'/latte - Type 'l' /cappuccino - Type - 'c')\n ").lower()
+    def operation_type(user_choice):
+        """Take a coffee type from user."""
 
-def operation_type(user_choice):
-    """Take a coffee type from user."""
+        if user_choice == 'e':
+            print('Espresso')
+            return 'espresso'
+        elif user_choice == 'l':
+            print('Latte')
+            return 'latte'
+        elif user_choice == 'c':
+            print('Cappuccino')
+            return 'cappuccino'
+        elif user_choice == 'r':
+            report()
+            return 'report'
+        elif user_choice == 'off':
+            return 'off'
+        elif user_choice == "m":
+            print(f'Mleko dla Zuzi')
+        elif user_choice =="z":
+            print('Zelki dla Zuzanki')
+        else:
+            print('Something went wrong ! Please type correct operation  type ')
 
-    if user_choice == 'e':
-        return 'espresso'
-    elif user_choice == 'l':
-        return 'latte'
-    elif user_choice == 'c':
-        return 'cappuccino'
-    elif user_choice == 'r':
-        report()
-        return 'report'
-    elif user_choice == 'off':
-        return 'off'
-    else:
-        print('Something went wrong ! Please type correct operation  type ')
+    clear()
 
-
-
-# operation_type(request)
-# Test returned value from function coffee_type
-operation_type(request)
-def check_req_ingredients(coffee_type):
-
-
-
-check_req_ingredients(operation_type(request))
+    # operation_type(request)
+    # Test returned value from function coffee_type
+    operation_type(request)
