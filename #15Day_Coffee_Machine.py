@@ -29,9 +29,9 @@ MENU = {
     }
 }
 resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
+    "water": 3000,
+    "milk": 2000,
+    "coffee": 1000,
     "money": 0,
 }
 powerOn = 1
@@ -53,7 +53,7 @@ def spend_coins(user_coins, drink_cost):
 
 
 def check_ingredients(resources):
-    """Water checking..."""
+    """Water , Milk , Coffee checking..."""
     next_water_amount = next_drink_ingredients['water']
     print(f' Your drink contains  {next_water_amount} ml of water ')
 
@@ -67,16 +67,20 @@ def check_ingredients(resources):
         if (resources['water'] > next_water_amount and resources['milk'] > next_milk_amount and resources['coffee'] >
                 next_coffee_amount):
             print(f'Your coffee is preparing ! Please Wait')
+            update_resources(next_water_amount , next_milk_amount , next_coffee_amount)
 
     elif resources['water'] > next_water_amount and resources['coffee'] > next_coffee_amount:
+
         next_milk_amount = 0
         print(f'Your coffee is preparing ! Please Wait')
+        update_resources(next_water_amount , next_milk_amount , next_coffee_amount)
 
     else:
         print(f' Not enough ingredients to prepare your coffee ... ')
         print("Return coins... ")
 
-    return next_water_amount, next_milk_amount, next_coffee_amount
+    next_amount = [next_water_amount, next_milk_amount, next_coffee_amount]
+    return next_amount
 
 
 def coin_process(drink_cost):
@@ -109,6 +113,17 @@ def coin_process(drink_cost):
         else:
             return "Counting cost still process .. "
 
+    return total_coins
+
+
+def update_resources(water, milk, coffee, ):
+
+    resources['milk'] -= milk
+    resources['water'] -= water
+    resources['coffee'] -= coffee
+    resources['money'] += MENU[to_make]['cost']
+    print(resources)
+
 
 while powerOn:
     request = input("What would you like? (espresso -Type 'e'/latte - Type 'l' /cappuccino - Type - 'c')\n ").lower()
@@ -128,7 +143,7 @@ while powerOn:
             return 'cappuccino'
         elif user_choice == 'r':
             report()
-
+            return 'report'
         elif user_choice == 'off':
             print('Shutdown ... preparing and report printing')
             report()
@@ -139,10 +154,10 @@ while powerOn:
             print('Something went wrong ! Please type correct operation  type ')
 
 
-    # (operation_type(request))
     to_make = operation_type(request)
     if to_make == 'report' and to_make == 'off':
         print("Service statement")
+
     else:
         next_drink_ingredients = MENU[to_make]['ingredients']
         next_drink_cost = MENU[to_make]['cost']
