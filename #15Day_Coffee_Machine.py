@@ -1,7 +1,7 @@
 """Project Coffee Machine from Udemy course #100DaysWithPython"""
 
-# """Dodać aktualizację zasobów w maszynie po wykonaniu kawy"""
-# """Poprawić błąd z próbą przypisania nastepnych składników gdy użyte jest off lub report"""
+
+# """Poprawić błąd z brakiem wystarczających składników - brak wywołania """
 
 MENU = {
     "espresso": {
@@ -29,13 +29,13 @@ MENU = {
     }
 }
 resources = {
-    "water": 3000,
-    "milk": 2000,
-    "coffee": 1000,
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
     "money": 0,
 }
 powerOn = 1
-
+refill_req = 0
 
 def report():
     water = resources["water"]
@@ -55,14 +55,14 @@ def spend_coins(user_coins, drink_cost):
 def check_ingredients(resources):
     """Water , Milk , Coffee checking..."""
     next_water_amount = next_drink_ingredients['water']
-    print(f' Your drink contains  {next_water_amount} ml of water ')
+    # print(f' Your drink contains  {next_water_amount} ml of water ')
 
     next_coffee_amount = next_drink_ingredients['coffee']
-    print(f' Your drink contains  {next_coffee_amount} g of coffee ')
+    # print(f' Your drink contains  {next_coffee_amount} g of coffee ')
 
     if operation_type(request) != 'espresso':
         next_milk_amount = next_drink_ingredients['milk']
-        print(f' Your drink contains  {next_milk_amount} ml of milk ')
+        # print(f' Your drink contains  {next_milk_amount} ml of milk ')
 
         if (resources['water'] > next_water_amount and resources['milk'] > next_milk_amount and resources['coffee'] >
                 next_coffee_amount):
@@ -78,6 +78,11 @@ def check_ingredients(resources):
     else:
         print(f' Not enough ingredients to prepare your coffee ... ')
         print("Return coins... ")
+        question = input('Refill machine now :  Y / N ').lower()
+        if question == "y":
+            refill_resources()
+        else:
+            print('Please choice another one drink...')
 
     next_amount = [next_water_amount, next_milk_amount, next_coffee_amount]
     return next_amount
@@ -123,6 +128,17 @@ def update_resources(water, milk, coffee, ):
     resources['coffee'] -= coffee
     resources['money'] += MENU[to_make]['cost']
     print(resources)
+
+
+def refill_resources():
+    if refill_req == 1 :
+        resources['milk'] = 300
+        resources['water'] = 200
+        resources['coffee'] = 100
+        resources['money'] = 0
+        print('Machine refill complete .')
+    else:
+        print('Something went wrong... Please try again')
 
 
 while powerOn:
