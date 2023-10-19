@@ -3,9 +3,10 @@ from data import question_data
 
 question_bank = []
 
-for i in question_data:
-    question = Question(question_data[i]["text"], question_data[i]["answer"] )
-    question = question_bank.append()
-
+for question in question_data:
+    question_text = question["text"]
+    question_answer = question["answer"]
+    new_question = Question(question_text, question_answer)
+    question_bank.append(new_question)
 
 print(question_bank)
