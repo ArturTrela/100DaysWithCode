@@ -1,11 +1,11 @@
 from turtle import Turtle , Screen
 
 boot = Turtle()
-boot.shape("turtle")
-boot.shapesize(2)
-boot.color("pink")
+boot.shape("arrow")
+boot.shapesize(1)
+boot.color("blue")
 boot.pensize(2)
-boot.pencolor("green")
+boot.pencolor("red")
 
 for turn in range (0 ,4):
     boot.forward(100)
