@@ -1,5 +1,5 @@
 from ASCIIart import logoHLG, vs
-import game_data
+from __oldfiles import game_data
 import random
 
 # # Create point counter as variable named score
