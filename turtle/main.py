@@ -1,6 +1,7 @@
 import turtle
 from turtle import Turtle, Screen
 import random
+
 boot = Turtle()
 boot.shape("classic")
 boot.shapesize(1)
@@ -52,7 +53,6 @@ boot.pencolor("OrangeRed1")
 #     lines += 1
 
 
-
 # """Making a random Walk with random colors """
 #
 # def random_walk():
@@ -71,19 +71,29 @@ boot.pencolor("OrangeRed1")
 # for a in range (200):
 #     random_walk()
 
-
 """Making a spirograph"""
-boot.pendown()
-turtle.colormode(255)
-boot.pencolor("blue")
-boot.circle(45 , 50 , 10)
-boot.left(180)
+angle =5
+def color_creator():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    rand_color = (r,g,b)
+    return rand_color
 
 
+def make_spiro(shift):
+    boot.speed(0)
+    boot.pendown()
+    turtle.colormode(255)
+    boot.pencolor(color_creator())
+    boot.circle(100)
+    boot.setheading(boot.heading()+shift)
 
+
+for y in range(int(360/angle)):
+    make_spiro(angle)
 
 
 
 my_screen = Screen()
 my_screen.exitonclick()
-
