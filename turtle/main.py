@@ -53,24 +53,36 @@ boot.pencolor("OrangeRed1")
 
 
 
+# """Making a random Walk with random colors """
+#
+# def random_walk():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     boot.speed(0)
+#     boot.pensize(4)
+#     angle = [0,90,180,270]
+#     boot.pendown()
+#     turtle.colormode(255)
+#     boot.pencolor((r, g, b))
+#     boot.forward(40)
+#     boot.setheading(random.choice(angle))
+#
+# for a in range (200):
+#     random_walk()
 
-"""Making a random Walk with random colors """
 
-def random_walk():
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    boot.speed(0)
-    boot.pensize(4)
-    angle = [0,90,180,270]
-    boot.pendown()
-    turtle.colormode(255)
-    boot.pencolor((r, g, b))
-    boot.forward(40)
-    boot.setheading(random.choice(angle))
+"""Making a spirograph"""
+boot.pendown()
+turtle.colormode(255)
+boot.pencolor("blue")
+boot.circle(45 , 50 , 10)
+boot.left(180)
 
-for a in range (200):
-    random_walk()
+
+
+
+
 
 my_screen = Screen()
 my_screen.exitonclick()
