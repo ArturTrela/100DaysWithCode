@@ -52,7 +52,7 @@ boot.pencolor("OrangeRed1")
 #     angle += 1
 #     lines += 1
 
-
+#
 # """Making a random Walk with random colors """
 #
 # def random_walk():
@@ -92,7 +92,7 @@ def make_spiro(shift):
 
 for y in range(int(360/angle)):
     make_spiro(angle)
-
+#
 
 
 my_screen = Screen()
