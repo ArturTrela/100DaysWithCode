@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+from snake_game import food
+
 STARTING_POSITION = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 UP = 90
@@ -10,6 +12,8 @@ LEFT_WALL = -300
 RIGHT_WALL = 300
 TOP_WALL = 300
 BOTTOM_WALL = -300
+
+
 class Snake:
 
     def __init__(self):
@@ -17,6 +21,10 @@ class Snake:
         self.creating_snake()
         self.head = self.segments[0]
         self.body_collision = False
+        self.wall_collision = False
+        self.food_collision =False
+        self.head_x_cord = self.head.xcor()
+        self.head_y_cord = self.head.ycor()
 
     def creating_snake(self):
         for position in STARTING_POSITION:
@@ -62,7 +70,20 @@ class Snake:
         print(f'X: {act_x_pos},Y: {act_y_pos}')
 
         if act_x_pos == LEFT_WALL or act_x_pos == RIGHT_WALL or act_y_pos == TOP_WALL or act_y_pos == BOTTOM_WALL:
+            self.wall_collision = True
             print("Wall Collision")
 
         if self.body_collision:
             print("Body Collision")
+
+        if self.head_x_cord ==
+            print(f'Food has been found ')
+            self.body_add()
+
+    def body_add(self):
+        snake = Turtle(shape="square")
+        snake.color("white")
+        snake.penup()
+        snake.speed(10)
+        snake.goto(self.head)
+        self.segments.append(snake)
