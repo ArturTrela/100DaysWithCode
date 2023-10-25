@@ -29,12 +29,18 @@ class Snake(Turtle):
 
     def creating_snake(self):
         for position in STARTING_POSITION:
-            snake = Turtle(shape="square")
-            snake.color("white")
-            snake.penup()
-            snake.speed(10)
-            snake.goto(position)
-            self.segments.append(snake)
+            self.add_segment(position)
+
+    def add_segment(self, position ):
+        snake = Turtle(shape="square")
+        snake.color("white")
+        snake.penup()
+        snake.speed(10)
+        snake.goto(position)
+        self.segments.append(snake)
+
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
 
     def move(self, screen):
         for seg_num in range(len(self.segments) - 1, 0, -1):
@@ -72,19 +78,12 @@ class Snake(Turtle):
         act_y_pos = (self.head.ycor())
         print(f'X: {act_x_pos},Y: {act_y_pos}')
 
-        if act_x_pos == LEFT_WALL or act_x_pos == RIGHT_WALL or act_y_pos == TOP_WALL or act_y_pos == BOTTOM_WALL:
+        if act_x_pos <= LEFT_WALL or act_x_pos >= RIGHT_WALL or act_y_pos >= TOP_WALL or act_y_pos <= BOTTOM_WALL:
             self.wall_collision = True
             print("Wall Collision")
 
-        if self.body_collision:
-            print("Body Collision")
 
 
 
-    def body_add(self):
-        snake = Turtle(shape="square")
-        snake.color("white")
-        snake.penup()
-        snake.speed(10)
-        snake.goto(self.head)
-        self.segments.append(snake)
+
+
