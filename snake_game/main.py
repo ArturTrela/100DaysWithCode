@@ -52,10 +52,18 @@ while is_game_On:
         food.make_random_position()
         snake.extend()
         scoreboard.increase_score()
-    for segment in snake.segments:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+
+    """OPTION 1 - Check collision without head"""
+    # for segment in snake.segments:
+    #     if segment == snake.head:
+    #         pass
+    #     elif snake.head.distance(segment) < 10:
+    #         is_game_On = False
+    #         scoreboard.game_over()
+
+    """OPTION 2 = Check collision without head - with using slices list/tuples"""
+    for segment in snake.segments[1::]:
+        if snake.head.distance(segment) < 10:
             is_game_On = False
             scoreboard.game_over()
 
