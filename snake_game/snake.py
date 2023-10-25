@@ -13,6 +13,7 @@ RIGHT_WALL = 300
 TOP_WALL = 300
 BOTTOM_WALL = -300
 
+
 class Snake(Turtle):
 
     def __init__(self):
@@ -22,7 +23,7 @@ class Snake(Turtle):
         self.head = self.segments[0]
         self.body_collision = False
         self.wall_collision = False
-        self.food_collision =False
+        self.food_collision = False
         self.head_x_cord = self.head.xcor()
         self.head_y_cord = self.head.ycor()
 
@@ -47,6 +48,7 @@ class Snake(Turtle):
             self.head.setheading(UP)
         else:
             self.body_collision = True
+
     def down(self):
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
@@ -64,9 +66,10 @@ class Snake(Turtle):
             self.head.setheading(RIGHT)
         else:
             self.body_collision = True
+
     def check_position(self):
-        act_x_pos = round(self.head.xcor())
-        act_y_pos = round(self.head.ycor())
+        act_x_pos = (self.head.xcor())
+        act_y_pos = (self.head.ycor())
         print(f'X: {act_x_pos},Y: {act_y_pos}')
 
         if act_x_pos == LEFT_WALL or act_x_pos == RIGHT_WALL or act_y_pos == TOP_WALL or act_y_pos == BOTTOM_WALL:
@@ -76,9 +79,7 @@ class Snake(Turtle):
         if self.body_collision:
             print("Body Collision")
 
-        # if self.head_x_cord == food_pos_x and self.head_y_cord == food_pos_y:
-        #     print(f'Food has been found ')
-        #     self.body_add()
+
 
     def body_add(self):
         snake = Turtle(shape="square")

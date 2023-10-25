@@ -1,5 +1,7 @@
-class Score:
+
+class Score():
 
     def __init__(self):
         pass
+
 

@@ -17,6 +17,7 @@ from turtle import Screen
 import time
 from snake import Snake
 from food import Food
+from.score import Score
 
 screen = Screen()
 screen.setup(600, 600)
@@ -32,7 +33,7 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 food = Food()
-food.make_random_position()
+score = Score()
 
 
 while is_game_On:
@@ -47,6 +48,8 @@ while is_game_On:
 
     if snake.head.distance(food) < 15:
         print(f'Food detect !')
-
+        food.make_random_position()
+        # snake.body_add()
+        score.score += 1
 
 screen.exitonclick()
