@@ -14,8 +14,7 @@ class Food:
         self.food.color("blue")
         self.food.shapesize(1)
         self.food_cord = ()
-        global food_x_cord = self.food_cord[0]
-        global food_y_cord = self.food_cord[1]
+
 
 
     def make_random_position(self):

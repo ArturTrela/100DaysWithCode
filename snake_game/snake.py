@@ -76,9 +76,9 @@ class Snake:
         if self.body_collision:
             print("Body Collision")
 
-        if self.head_x_cord ==
-            print(f'Food has been found ')
-            self.body_add()
+        # if self.head_x_cord ==
+        #     print(f'Food has been found ')
+        #     self.body_add()
 
     def body_add(self):
         snake = Turtle(shape="square")
