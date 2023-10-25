@@ -13,7 +13,7 @@ DAY 2 requirement :
 
 """
 
-from turtle import Turtle, Screen
+from turtle import Screen
 import time
 from snake import Snake
 from food import Food
@@ -34,17 +34,19 @@ screen.onkey(snake.right, "Right")
 food = Food()
 food.make_random_position()
 
+
 while is_game_On:
 
     screen.update()
-    time.sleep(0.3)
+    time.sleep(0.2)
     snake.move(screen)
     snake.check_position()
     if snake.body_collision or snake.wall_collision:
         is_game_On = False
-    print(f'FOOD: {food.food_cord}')
+    # print(f'FOOD: {food.food_cord}')
 
-
+    if snake.head.distance(food) < 15:
+        print(f'Food detect !')
 
 
 screen.exitonclick()
