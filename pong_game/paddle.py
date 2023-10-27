@@ -4,6 +4,7 @@ LOWER_EDGE = -50
 PLAYGROUND_LIMIT_UP = 250
 PLAYGROUND_LIMIT_DOWN = -250
 play_ground = Screen()
+
 class Paddle(Turtle):
 
     def __init__(self):
@@ -20,6 +21,8 @@ class Paddle(Turtle):
         if self.ycor() < 240 :
             self.setheading(90)
             self.forward(20)
+            position = (self.ycor())
+            print(position)
             play_ground.update()
 
     def paddle_down(self):
@@ -27,5 +30,7 @@ class Paddle(Turtle):
             self.setheading(270)
             self.forward(20)
             play_ground.update()
+            position = (self.ycor())
+            print(position)
 
 
