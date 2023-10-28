@@ -25,7 +25,7 @@ class Liner(Turtle):
             step += 1
             print(self.ycor())
 
-    def make_court(self):
+    def make_playfield(self):
         self.pencolor("Orange")
         self.pensize(2)
         self.penup()
