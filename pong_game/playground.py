@@ -1,7 +1,7 @@
 from turtle import Turtle, Screen
 
 ALIGMENT = "center"
-FONT = ("Arial", 18, "normal")
+FONT = ("Times New Roman", 24, "normal")
 
 
 class Liner(Turtle):
@@ -48,7 +48,7 @@ class Counter(Turtle):
         self.penup()
         self.hideturtle()
         self.score = 0
-        # self.goto(60, 260)
+
         self.color("White")
         self.score_update()
 
