@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from playground import Liner, Counter
+from ball import Ball
 screen = Screen()
 screen.bgcolor("Black")
 screen.setup(800, 600)
@@ -21,6 +22,7 @@ player_1_cnt.goto(50,260)
 player_2_cnt.goto(-50,260)
 player_2_cnt.clear()
 player_1_cnt.clear()
+ball = Ball()
 
 screen.onkey(right_paddle.paddle_up, "Up")
 screen.onkey(right_paddle.paddle_down, "Down")
