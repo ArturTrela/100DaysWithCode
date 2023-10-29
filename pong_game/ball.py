@@ -13,10 +13,15 @@ class Ball(Turtle):
         self.goto(0, 0)
 
     def ball_movement(self):
+        y_cord = self.ycor()
+        x_cord = self.xcor()
         random_angle = random.randint(0, 90)
         self.right(random_angle)
+        if y_cord < 270 or y_cord > - 270:
+            self.forward(50)
         print(random_angle)
-        self.forward(20)
+
+
 
 
     def wall_detect(self):
