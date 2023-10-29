@@ -1,7 +1,9 @@
 from turtle import Turtle, Screen
 import random
 import time
+
 play = Screen()
+
 
 class Ball(Turtle):
 
@@ -21,23 +23,17 @@ class Ball(Turtle):
         condition_y = int(y_cord) > -230 or int(y_cord) < 230
         condition_x = int(x_cord) > -300 or int(x_cord) < 300
 
-        # for s in range(40):
-        #     self.forward(10)
-        #     print(random_angle)
-        #     play.update()
-        #     time.sleep(0.2)
         if condition_x or condition_y:
-            for s in range(40):
+            for y_cord in range(-270 , 270 ):
                 self.forward(10)
-                y_cord = self.ycor()
+                y_cord = int(self.ycor())
                 x_cord = self.xcor()
                 print(y_cord)
+
                 play.update()
                 time.sleep(0.1)
+        else:
             print('wall detection')
-
-
-
 
     def wall_detect(self):
         """ Detect a wall collision and create a 90 angle rebound """
