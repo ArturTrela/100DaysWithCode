@@ -15,7 +15,6 @@ class Liner(Turtle):
         self.goto(0, -350)
 
     def make_line(self):
-        print(self.ycor())
         for step in range(10):
             self.pendown()
             self.setheading(90)
@@ -23,7 +22,6 @@ class Liner(Turtle):
             self.penup()
             self.forward(20)
             step += 1
-            print(self.ycor())
 
     def make_playfield(self):
         self.pencolor("Orange")

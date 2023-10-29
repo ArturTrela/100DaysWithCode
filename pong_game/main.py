@@ -23,15 +23,21 @@ player_2_cnt.goto(-50,260)
 player_2_cnt.clear()
 player_1_cnt.clear()
 ball = Ball()
+ball_position_y = ball.ycor()
+ball_position_x = ball.xcor()
+screen.onkey(ball.ball_movement, "g")
+while True:
+    screen.onkey(right_paddle.paddle_up, "Up")
+    screen.onkey(right_paddle.paddle_down, "Down")
 
-screen.onkey(right_paddle.paddle_up, "Up")
-screen.onkey(right_paddle.paddle_down, "Down")
-player_1_cnt.score_update()
-player_2_cnt.score_update()
-if multiPlayer:
-    screen.onkey(left_paddle.paddle_up, "w")
-    screen.onkey(left_paddle.paddle_down, "s")
-
-
-screen.update()
-screen.exitonclick()
+    player_1_cnt.score_update()
+    player_2_cnt.score_update()
+    if ball_position_y in range(-270,270) and ball_position_x in range(-350,350):
+        ball.ball_movement()
+        screen.update()
+        print(f'Ball X:{ball_position_x} / Ball Y:{ball_position_y}')
+    if multiPlayer:
+        screen.onkey(left_paddle.paddle_up, "w")
+        screen.onkey(left_paddle.paddle_down, "s")
+    screen.update()
+    screen.exitonclick()
