@@ -1,7 +1,7 @@
 from turtle import Turtle, Screen
 
 ALIGMENT = "center"
-FONT = ("Times New Roman", 24, "normal")
+FONT = ("Courier", 48, "normal")
 
 
 class Liner(Turtle):
