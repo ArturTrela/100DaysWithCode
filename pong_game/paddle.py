@@ -19,13 +19,12 @@ class Paddle(Turtle):
             self.forward(20)
             position = (self.ycor())
             print(position)
-            play_ground.update()
+
 
     def paddle_down(self):
         if self.ycor() > - 250:
             self.setheading(270)
             self.forward(20)
-            play_ground.update()
             position = (self.ycor())
             print(position)
 
