@@ -9,11 +9,27 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 screen.listen()
 player = Player()
-screen.onkey(player.move , "Up")
+game_loop =0
+car = CarManager()
+screen.onkey(player.move, "Up")
+scoreboard = Scoreboard()
+scoreboard.clear()
+scoreboard.goto(-230 , 260)
+scoreboard.score_update()
 game_is_on = True
+play_speed = 0.1
 while game_is_on:
-    time.sleep(0.1)
-    screen.update()
 
+    if game_loop % 12 == 0:
+        car= CarManager()
+    # car.move()
+    time.sleep(play_speed)
+
+    if player.onFinish:
+        scoreboard.increase_score()
+    player.check_finish()
+    screen.update()
+    car.move()
+    game_loop +=1
 
 screen.exitonclick()
