@@ -31,7 +31,7 @@ class Snake(Turtle):
         for position in STARTING_POSITION:
             self.add_segment(position)
 
-    def add_segment(self, position ):
+    def add_segment(self, position):
         snake = Turtle(shape="square")
         snake.color("white")
         snake.penup()
@@ -80,10 +80,12 @@ class Snake(Turtle):
 
         if act_x_pos <= LEFT_WALL or act_x_pos >= RIGHT_WALL or act_y_pos >= TOP_WALL or act_y_pos <= BOTTOM_WALL:
             self.wall_collision = True
+            self.hideturtle()
             print("Wall Collision")
 
-
-
-
-
-
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.creating_snake()
+        self.head = self.segments[0]
