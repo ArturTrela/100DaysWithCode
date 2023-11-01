@@ -44,9 +44,8 @@ while is_game_On:
     snake.move(screen)
     snake.check_position()
     if snake.wall_collision:
-        is_game_On = False
-        scoreboard.game_over()
-
+        scoreboard.reset()
+        snake.reset()
     if snake.head.distance(food) < 15:
         print(f'Food detect !')
         food.make_random_position()
@@ -64,7 +63,7 @@ while is_game_On:
     """OPTION 2 = Check collision without head - with using slices list/tuples"""
     for segment in snake.segments[1::]:
         if snake.head.distance(segment) < 10:
-            is_game_On = False
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
 
 screen.exitonclick()
