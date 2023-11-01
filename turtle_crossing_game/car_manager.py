@@ -1,7 +1,9 @@
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
-from turtle import Turtle
+ALIGMENT ="center"
+FONT = ("Courier" , 72 , "normal")
+from turtle import Turtle, Screen
 import random
 class CarManager:
 
@@ -10,7 +12,7 @@ class CarManager:
         self.all_car = []
 
     def create_car(self):
-        random_chance = random.randint(1,6)
+        random_chance = random.randint(1,10)
         if random_chance == 6:
             new_car = Turtle()
             new_car.shape("square")
@@ -23,11 +25,22 @@ class CarManager:
             new_car.showturtle()
             new_car.speed(1)
             self.all_car.append(new_car)
+            self.car_speed = STARTING_MOVE_DISTANCE
 
-
-
-
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
+        print(self.car_speed)
     def move_cars(self):
         for car in self.all_car:
             car.forward(STARTING_MOVE_DISTANCE)
 
+
+    def car_stop(self):
+        for car in self.all_car:
+            car.speed(0)
+
+        popup = Screen()
+        popup.setup(600,600)
+        info = Turtle()
+        info.hideturtle()
+        info.write("GAME OVER",False, align=ALIGMENT, font=FONT)
