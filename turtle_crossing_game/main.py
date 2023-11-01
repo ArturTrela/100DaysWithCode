@@ -24,12 +24,18 @@ while game_is_on:
     screen.update()
     car_menager.create_car()
     car_menager.move_cars()
-
     player.check_finish()
     if player.onFinish:
         scoreboard.increase_score()
+        car_menager.level_up()
         player.onFinish = False
 
+    # Detect collision with cars
+    for car in car_menager.all_car:
+        if player.distance(car) < 20:
+            car_menager.car_stop()
+            game_is_on = False
+
     game_loop += 1
-    print(game_loop)
+
 screen.exitonclick()
