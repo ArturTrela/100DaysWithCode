@@ -25,10 +25,10 @@ while game_is_on:
     car_menager.create_car()
     car_menager.move_cars()
 
-
+    player.check_finish()
     if player.onFinish:
         scoreboard.increase_score()
-    player.check_finish()
+        player.onFinish = False
 
     game_loop += 1
     print(game_loop)
