@@ -24,3 +24,4 @@ class Player(Turtle):
         if self.ycor()>= FINISH_LINE_Y:
             self.onFinish = True
             self.goto(STARTING_POSITION)
+
