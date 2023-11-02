@@ -35,7 +35,8 @@ screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 food = Food()
 scoreboard = Scoreboard()
-
+scoreboard.clear()
+scoreboard.last_high_score()
 
 while is_game_On:
 
@@ -47,7 +48,6 @@ while is_game_On:
         scoreboard.reset()
         snake.reset()
     if snake.head.distance(food) < 15:
-        print(f'Food detect !')
         food.make_random_position()
         snake.extend()
         scoreboard.increase_score()
