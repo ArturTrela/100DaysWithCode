@@ -16,17 +16,18 @@ input_data = pd.read_csv("50_states.csv")
 question_num = 0
 correct_answer = []
 condition = 1
+table_states = []
 writer = Writer()
 while question_num < 51:
     answer_state = (screen.textinput(prompt="What's next state?", title=f'{question_num}/50 States Correct')).title()
-    next_state = input_data.state == answer_state
-
-    if condition:
+    next_state = (input_data.state == answer_state)
+    for state in input_data.state:
+        table_states.append(state)
+    if answer_state in table_states:
         for_cords = input_data[next_state]
-        print(for_cords)
+        # print(for_cords)
         x_cord = int(for_cords["x"])
         y_cord = int(for_cords["y"])
-        print(x_cord , y_cord)
 
         writer.goto(int(x_cord), int(y_cord))
         writer.write(answer_state, move=False, align=ALIGMENT, font=FONT)
