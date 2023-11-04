@@ -1,3 +1,4 @@
+import pandas
 import pandas as pd
 import turtle
 from writer import Writer
@@ -19,8 +20,7 @@ writer = Writer()
 while question_num < 51:
     answer_state = (screen.textinput(prompt="What's next state?", title=f'{question_num}/50 States Correct')).title()
     next_state = input_data.state == answer_state
-    is_in_State = input_data.state[next_state]
-    print(is_in_State)
+
     if condition:
         for_cords = input_data[next_state]
         print(for_cords)
@@ -40,4 +40,7 @@ while question_num < 51:
         writer.clear()
 
     question_num += 1
+
+last_values = pandas.DataFrame(correct_answer)
+last_values.to_csv("last_values.csv")
 screen.exitonclick()
