@@ -1,31 +1,18 @@
-"""manually created file and structure cause source file from repo Udemy is in iOS coding"""
+"""manualy created file and structure cause source file from repo Udemy is in iOS coding"""
 
-starting_letter = []
-invite_names = []
 final_letter = []
-with open("../Input/Letters/starting_letter.txt", "r") as letters:
-    for row in letters:
-        starting_letter.append(row)
-
+new_names = []
 
 with open("../Input/Names/invited_names.txt", "r") as invited:
-    for row in invited:
-        invite_names.append(row)
+    invite_names = invited.readlines()
+    for name in invite_names:
+        striped_name = name.strip()
+        new_names.append(striped_name)
+for name in new_names:
+    with open("../Input/Letters/starting_letter.txt", "r") as letters:
+        starting_letter = letters.read()
 
-
-
-
-for i in range(0 ,len(invite_names)-1):
-    with open(f'invited_{invite_names[i]}.txt', "w") as final:
-        final_letter = starting_letter
-        header = final_letter[0].replace("[name]",invite_names[i])
-        starting_letter.insert(0,header)
-        starting_letter.pop(1)
-
-
-
-
-
-print(header)
-print(invite_names)
-print(final_letter)
+        final_letter = starting_letter.replace("[name]", name)
+        print(final_letter)
+        with open(f'./ReadyToSend/letter_for_{name}.txt', "w") as final:
+            final.writelines(final_letter)
