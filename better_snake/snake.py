@@ -76,12 +76,12 @@ class Snake(Turtle):
     def check_position(self):
         act_x_pos = (self.head.xcor())
         act_y_pos = (self.head.ycor())
-
+        print(f'X: {act_x_pos},Y: {act_y_pos}')
 
         if act_x_pos <= LEFT_WALL or act_x_pos >= RIGHT_WALL or act_y_pos >= TOP_WALL or act_y_pos <= BOTTOM_WALL:
             self.wall_collision = True
             self.hideturtle()
-
+            print("Wall Collision")
 
     def reset(self):
         for seg in self.segments:
