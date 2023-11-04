@@ -14,8 +14,7 @@ turtle.shape(image)
 input_data = pd.read_csv("50_states.csv")
 # print(input_data)
 question_num = 0
-correct_answer = []
-condition = 1
+correct_answer=[]
 table_states = []
 writer = Writer()
 while question_num < 51:
@@ -34,6 +33,7 @@ while question_num < 51:
         screen.update()
         correct_answer.append(answer_state)
 
+
     else:
         writer.goto(0,0)
         writer.write("Wrong state name", move=False, align=ALIGMENT,font=("Tahoma", 42, "bold"))
@@ -42,6 +42,6 @@ while question_num < 51:
 
     question_num += 1
 
-last_values = pandas.DataFrame(correct_answer)
-last_values.to_csv("last_values.csv")
+    last_values = pandas.DataFrame(correct_answer)
+    last_values.to_csv("last_values.csv")
 screen.exitonclick()
