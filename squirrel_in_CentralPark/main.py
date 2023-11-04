@@ -15,4 +15,5 @@ squirrel_dict = {
     "Counter": squirrel_ok
 }
 squirrel_df = pd.DataFrame(squirrel_dict)
+squirrel_df.to_csv("final_squirrel.csv")
 print(squirrel_df)
