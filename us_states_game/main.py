@@ -17,6 +17,7 @@ question_num = 0
 correct_answer=[]
 table_states = []
 writer = Writer()
+popUp =Writer()
 while question_num < 51:
     answer_state = (screen.textinput(prompt="What's next state?", title=f'{question_num}/50 States Correct')).title()
     next_state = (input_data.state == answer_state)
@@ -35,10 +36,10 @@ while question_num < 51:
 
 
     else:
-        writer.goto(0,0)
-        writer.write("Wrong state name", move=False, align=ALIGMENT,font=("Tahoma", 42, "bold"))
+        popUp.goto(0,0)
+        popUp.write("Wrong state name", move=False, align=ALIGMENT,font=("Tahoma", 42, "bold"))
         time.sleep(2)
-        writer.clear()
+        popUp.clear()
 
     question_num += 1
 
