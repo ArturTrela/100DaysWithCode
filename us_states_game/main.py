@@ -42,7 +42,9 @@ while question_num < 51:
         popUp.clear()
 
     question_num += 1
-
+    missing_states = [state for state in input_data.state if state not in correct_answer]
     last_values = pandas.DataFrame(correct_answer)
     last_values.to_csv("last_values.csv")
+    missing_df = pd.DataFrame(missing_states)
+    missing_df.to_csv("missing_states.csv")
 screen.exitonclick()
