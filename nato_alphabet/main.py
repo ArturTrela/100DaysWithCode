@@ -9,8 +9,8 @@ with open("nato_phonetic_alphabet.csv") as data:
 
 phonetic = {row.letter:row.code for (index,row) in nato.iterrows()}
 
-print(phonetic)
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 user_letter = input('Tell me any sentence \n ' ).upper()
-
-print(user_letter)
+user_letter_list = [ phonetic[l] for l in user_letter]
+print(user_letter_list)
+# phonetic_list = [ phonetic.values for phonetic.keys in user_letter_list]
