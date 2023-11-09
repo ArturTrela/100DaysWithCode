@@ -17,7 +17,7 @@ inputField.grid(column=0, row=3)
 
 def convert():
     ratio = 1.609344
-    user_input = (inputField.get())
+    user_input = int(inputField.get())
     print(user_input)
     result = user_input
 
