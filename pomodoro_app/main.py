@@ -1,47 +1,65 @@
 import tkinter as tk
 from tkinter import PhotoImage
+import datetime , time
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
-FONT_NAME = ("Courier", 24, )
+FONT_NAME = ("Courier", 24,)
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-status =["WORK","BREAK"]
+status = ["WORK", "BREAK"]
+worktime_preset = 25
+breaktime_preset = 5
+pomodoro_is_On = True
+remaining_time = datetime.time(0, 25, 0)
 
-# ---------------------------- TIMER RESET ------------------------------- #
+window = tk.Tk()
+window.image ="tomato.png"
+window.title("POMODORO APP")
+window.minsize(240, 480)
 
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+# # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
+# act_time = datetime.time(0, minutes, seconds)
+def down():
+    minutes = 24
+    seconds = 59
+    while minutes >0:
+        for y in range(0,seconds):
+            time.sleep(0.1)
+            seconds -=1
+            remaining_time = (f'{minutes} : {seconds}')
+            print(remaining_time)
+        minutes -= 1
 
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
+    print(minutes)
 
-# ---------------------------- UI SETUP ------------------------------- #
-class Window:
+#
+# # ---------------------------- TIMER RESET ------------------------------- #
 
-    def __init__(self, image):
-        self.image = image
-        self.root = tk.Tk()
-        self.root.title("POMODORO APP")
-        self.root.minsize(240, 480)
-        self.widgets()
-        self.root.mainloop()
+# # ---------------------------- TIMER MECHANISM ------------------------------- #
 
-    def widgets(self):
-        self.img = PhotoImage(file=self.image)
-        label = tk.Label(self.root, image=self.img)
-        label.grid(column=4, row=1)
+# # ---------------------------- UI SETUP ------------------------------- #
+#
+window.img = PhotoImage(file=window.image)
+label = tk.Label(window, image=window.img)
+label.grid(column=4, row=1)
 
-        title_label = tk.Label(text=status[0], font=FONT_NAME)
-        title_label.config(padx=0,pady=0)
-        title_label.grid(column=4, row=0)
+title_label = tk.Label(text=status[0], font=FONT_NAME)
+title_label.config(padx=0, pady=0)
+title_label.grid(column=4, row=0)
 
-        start_btn = tk.Button(text = "START", background=PINK, foreground="Black", font=FONT_NAME)
-        start_btn.grid(column=2, row=5)
-        reset_btn = tk.Button(text="RESET", background=PINK, foreground="Black", font=FONT_NAME)
-        reset_btn.grid(column=8, row=5)
+start_btn = tk.Button(text="START", background=PINK, foreground="Black", font=FONT_NAME,command=down)
+start_btn.grid(column=2, row=5)
 
-image = "tomato.png"
-Window(image)
+reset_btn = tk.Button(text="RESET", background=PINK, foreground="Black", font=FONT_NAME, )
+reset_btn.grid(column=8, row=5)
+
+time_label = tk.Label(text = remaining_time, font=FONT_NAME, )
+time_label.grid(column=4, row=1)
+
+
+window.mainloop()
