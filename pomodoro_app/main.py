@@ -9,9 +9,9 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = ("Courier", 24,)
-WORK_MIN = 1
-SHORT_BREAK_MIN = 1
-LONG_BREAK_MIN = 2
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
+LONG_BREAK_MIN = 20
 status = ["WORK", "BREAK", "LONG BREAK"]
 pomodoro_qty = ['', '✔', '', '✔✔', '', '✔✔✔', '', '✔✔✔✔', '', '✔✔✔✔✔']
 mark = "✔"
@@ -63,7 +63,7 @@ def count_down(count):
         count_sec = f'0{count_sec}'
     if count >= 0:
         canvas.itemconfig(timer_text, text=f'{count_min}:{count_sec}')
-        clockApp = window.after(200, count_down, count - 1)
+        clockApp = window.after(1000, count_down, count - 1)
     else:
         start_timer()
 
