@@ -1,7 +1,7 @@
 import tkinter.messagebox
 from tkinter import *
 import random
-import turtle
+import pyperclip
 
 # -------------------------- CONSTANTS-------------------------------------------#
 BACKGROUND = "#9EB8D9"
@@ -27,6 +27,7 @@ def generate():
     final_pass = ''.join(str(sign) for sign in new_password)
     if len(password_Field.get()) == 0:
         password_Field.insert(0, final_pass)
+        pyperclip.copy(final_pass)
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
