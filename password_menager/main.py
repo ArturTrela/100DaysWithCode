@@ -1,5 +1,7 @@
+import tkinter.messagebox
 from tkinter import *
 import random
+import turtle
 # -------------------------- CONSTANTS-------------------------------------------#
 BACKGROUND = "#9EB8D9"
 FOREGROUND = "#7C93C3"
@@ -27,17 +29,21 @@ def generate():
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
+    if len(website_Input.get()) != 0 and len(password_Field.get()) >= 16 and len(username_Input.get()) != 0:
+        web = website_Input.get()
+        user = username_Input.get()
+        password = password_Field.get()
+        data = (f"WEB: {web}    |    USERNAME : {user}  |  PASSWORD: {password}\n ")
+        datalist.append(data)
+        with open("data.txt", "a") as file:
+            file.writelines(datalist)
+        # Clear field after insert data into file
+        website_Input.delete(0, END)
+        password_Field.delete(0, END)
 
-    web = website_Input.get()
-    user = username_Input.get()
-    password = password_Field.get()
-    data = (f"WEB: {web}    |    USERNAME : {user}  |  PASSWORD: {password}\n ")
-    datalist.append(data)
-    with open("data.txt", "a") as file:
-        file.writelines(datalist)
-    # Clear field after insert data into file
-
-
+        tkinter.messagebox.showinfo("Confirmation", f"New password for {web} added successful ")
+    else:
+        tkinter.messagebox.showerror("ERROR", "Please insert correct data ")
 # ---------------------------- UI SETUP ------------------------------- #
 
 screen = Tk()
