@@ -72,8 +72,20 @@ def save():
         tkinter.messagebox.showerror("ERROR", "Please insert correct data ")
 
 
-def search():
-    pass
+def find_password():
+    with open ("data.json" , "r") as file:
+        data2 = json.load(file)
+    user_text = website_Input.get()
+    try:
+        to_show = data2[user_text]
+        pass_to_show = to_show["password"]
+    except KeyError:
+        tkinter.messagebox.showerror("ERROR", f'Website  not Found')
+
+    else:
+        tkinter.messagebox.showinfo("Information", f'Password for {user_text} is: {pass_to_show}')
+    finally:
+        pass
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -95,21 +107,21 @@ username_Label.grid(column=0, row=2)
 password_Label = Label(text="Password", font=(FONTNAME, 10, "bold"), bg=BACKGROUND)
 password_Label.grid(column=0, row=3)
 
-website_Input = Entry(width=25, highlightbackground=FOREGROUND)
-website_Input.grid(column=1, row=1, columnspan=2, sticky="w")
+website_Input = Entry(width=22, highlightbackground=FOREGROUND ,fg=FOREGROUND, highlightthickness=1)
+website_Input.grid(column=1, row=1, sticky="w")
 website_Input.focus()
-username_Input = Entry(width=40, fg=FOREGROUND)
+username_Input = Entry(width=39, fg=FOREGROUND)
 username_Input.grid(column=1, row=2, columnspan=2, sticky="w")
 username_Input.insert(0, "testmail@elephant.com")
-password_Field = Entry(width=21, )
+password_Field = Entry(width=22,highlightthickness=1 ,fg=FOREGROUND )
 password_Field.grid(column=1, row=3, sticky="w")
 
-generate_Button = Button(width=15, text="Generate Password", highlightcolor="blue", command=generate)
+generate_Button = Button(width=16, text="Generate", font=(FONTNAME,7,"normal"),highlightcolor="blue", command=generate)
 generate_Button.grid(column=1, row=3, padx=131)
 
-add_Button = Button(width=34, text="ADD", padx=0, command=save)
+add_Button = Button(width=33, text="ADD", padx=0, command=save)
 add_Button.grid(column=1, row=4, sticky="w")
 
-search_Button = Button(width=15, text="Search", highlightcolor="blue", command=search)
+search_Button = Button(width=17, text="Search", font=(FONTNAME,7,"normal"),highlightcolor="blue", command=find_password)
 search_Button.grid(column =1 , row=1)
 screen.mainloop()
