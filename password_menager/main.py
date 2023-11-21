@@ -2,7 +2,7 @@ import tkinter.messagebox
 from tkinter import *
 import random
 import pyperclip
-
+import json
 # -------------------------- CONSTANTS-------------------------------------------#
 BACKGROUND = "#9EB8D9"
 FOREGROUND = "#7C93C3"
@@ -32,22 +32,48 @@ def generate():
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
+
     if len(website_Input.get()) != 0 and len(password_Field.get()) >= 16 and len(username_Input.get()) != 0:
-        web = website_Input.get()
+        website = website_Input.get()
         user = username_Input.get()
         password = password_Field.get()
-        data = (f"WEB: {web}    |    USERNAME : {user}  |  PASSWORD: {password}\n ")
-        datalist.append(data)
-        with open("data.txt", "w") as file:
-            file.writelines(datalist)
-        # Clear field after insert data into file
-        website_Input.delete(0, END)
-        password_Field.delete(0, END)
+        new_data = {
+            website: {
+                "email": user,
+                "password": password,
+            }
 
-        tkinter.messagebox.showinfo("Confirmation", f"New password for {web} added successful ")
+        }
+        data = (f"WEB: {website}    |    USERNAME : {user}  |  PASSWORD: {password}\n ")
+        datalist.append(data)
+        dane ={}
+        try:
+            with open("data.json", "r") as file:
+                # reading old data
+                dane = json.load(file)
+
+        except FileNotFoundError:
+            with open("data.json", "w") as file:
+                # create a file when is empty
+                json.dump(new_data, file, indent=4)
+        else:
+            # updating old data with new data
+            dane.update(new_data)
+            with open("data.json", "w") as file:
+                # update a file
+                json.dump(dane, file, indent=4)
+        finally:
+            # Clear field after insert data into file
+            website_Input.delete(0, END)
+            password_Field.delete(0, END)
+
+        tkinter.messagebox.showinfo("Confirmation", f"New password for {website} added successful ")
     else:
         tkinter.messagebox.showerror("ERROR", "Please insert correct data ")
 
+
+def search():
+    pass
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -60,7 +86,7 @@ canvas = Canvas(width=200, height=200, bg=BACKGROUND, highlightthickness=False)
 canvas.create_image(100, 100, image=lock_image)
 canvas.grid(column=0, row=0, columnspan=3)
 
-website_Label = Label(text="Website :", font=(FONTNAME, 10, "bold"), bg=BACKGROUND)
+website_Label = Label(text="Website :", font=(FONTNAME, 10, "bold"), bg=BACKGROUND, )
 website_Label.grid(column=0, row=1)
 
 username_Label = Label(text="Username / mail :", font=(FONTNAME, 10, "bold"), bg=BACKGROUND)
@@ -69,7 +95,7 @@ username_Label.grid(column=0, row=2)
 password_Label = Label(text="Password", font=(FONTNAME, 10, "bold"), bg=BACKGROUND)
 password_Label.grid(column=0, row=3)
 
-website_Input = Entry(width=40, highlightbackground=FOREGROUND)
+website_Input = Entry(width=25, highlightbackground=FOREGROUND)
 website_Input.grid(column=1, row=1, columnspan=2, sticky="w")
 website_Input.focus()
 username_Input = Entry(width=40, fg=FOREGROUND)
@@ -84,4 +110,6 @@ generate_Button.grid(column=1, row=3, padx=131)
 add_Button = Button(width=34, text="ADD", padx=0, command=save)
 add_Button.grid(column=1, row=4, sticky="w")
 
+search_Button = Button(width=15, text="Search", highlightcolor="blue", command=search)
+search_Button.grid(column =1 , row=1)
 screen.mainloop()
