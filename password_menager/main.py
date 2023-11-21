@@ -46,7 +46,6 @@ def save():
         }
         data = (f"WEB: {website}    |    USERNAME : {user}  |  PASSWORD: {password}\n ")
         datalist.append(data)
-        dane ={}
         try:
             with open("data.json", "r") as file:
                 # reading old data
@@ -75,7 +74,7 @@ def save():
 def find_password():
     with open ("data.json" , "r") as file:
         data2 = json.load(file)
-    user_text = website_Input.get()
+        user_text = website_Input.get()
     try:
         to_show = data2[user_text]
         pass_to_show = to_show["password"]
@@ -83,7 +82,7 @@ def find_password():
         tkinter.messagebox.showerror("ERROR", f'Website  not Found')
 
     else:
-        tkinter.messagebox.showinfo("Information", f'Password for {user_text} is: {pass_to_show}')
+        tkinter.messagebox.showinfo("Information", f'Password for {user_text} is: \n {pass_to_show}')
     finally:
         pass
 
