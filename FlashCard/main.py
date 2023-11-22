@@ -1,6 +1,7 @@
 # ___________IMPORTS_______________#
 
 from tkinter import *
+import pandas
 
 # __________CONSTANT_________#
 BACKGROUND_COLOR = "#B1DDC6"
@@ -11,19 +12,24 @@ WORD_FONT = ("Arial", 60, "bold")
 screen = Tk()
 screen.config(bg=BACKGROUND_COLOR, padx=50, pady=50)
 screen.title("Flash Card")
-canvas = Canvas(width=800, height=828, highlightthickness=False, bg=BACKGROUND_COLOR)
+canvas = Canvas(width=800, height=526, highlightthickness=False, bg=BACKGROUND_COLOR)
 imageCardFront = PhotoImage(file="./images/card_front.png")
 imageCardBack = PhotoImage(file="./images/card_back.png")
 canvas.create_image(400, 264, image=imageCardFront)
-canvas.grid(column=1, row=1, columnspan=2)
+canvas.grid(column=0, row=0, columnspan=2)
 canvas.create_text(400, 150, text="French", font=LANGUAGE_FONT, fill="black")
 canvas.create_text(400, 263, text="WORD", font=WORD_FONT, fill="black")
-right_icon = PhotoImage(file="./images/right.png")
-canvas.create_image(600, 600, image=right_icon)
+
+
 wrong_icon = PhotoImage(file="./images/wrong.png")
-canvas.create_image(200, 600, image=wrong_icon)
+unknown_button = Button(image=wrong_icon, highlightthickness=False)
+unknown_button.grid(column=0, row=1)
+
+right_icon = PhotoImage(file="./images/right.png")
+known_button = Button(image=right_icon, )
+known_button.grid(column=1, row=1)
 
 # ____________BACKGROUND LOGIC___________________#
-
-
+data = pandas.read_csv("./data/french_words.csv")
+print(data)
 screen.mainloop()
