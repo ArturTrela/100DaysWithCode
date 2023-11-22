@@ -10,54 +10,53 @@ BACKGROUND_COLOR = "#B1DDC6"
 LANGUAGE_FONT = ("Arial", 40, "italic")
 WORD_FONT = ("Arial", 60, "bold")
 clockApp = None
-next_word_fr = ""
-next_word_en = ""
+
+current_card = {}
 missing = []
 known = []
 pointer = 0
+
 # ____________BACKGROUND LOGIC___________________#
 data = pandas.read_csv("./data/french_words.csv")
-table_long = 100
+data_dict = data.to_dict(orient="records")
 
 
 def next_word():
-    global next_word_fr, clockApp, background_card, pointer
+    global clockApp, background_card, pointer, current_card
+    current_card = random.choice(data_dict)
     canvas.itemconfig(background_card, image=imageCardFront)
     canvas.itemconfig(canvas_language, text="French")
-    pointer = random.randrange(0, len(data))
-    next_word_fr = data["French"][pointer]
+
+    next_word_fr = current_card["French"]
     canvas.itemconfig(canvas_word, text=next_word_fr)
     clockApp = screen.after(3000, flip_card)
-    print(next_word_fr)
 
 
 def unknown_clicked():
-    global next_word_fr, missing
-    missing.append(next_word_fr)
+    missing.append(current_card)
     next_word()
 
 
 def known_clicked():
-    global next_word_fr, known
-    known.append(next_word_fr)
+    known.append(current_card)
     next_word()
+    data_dict.remove(current_card)
 
 
 def flip_card():
-    global clockApp, next_word_en
-    next_word_en = data["English"][pointer]
+    global clockApp
+    next_word_en = current_card["English"]
     canvas.itemconfig(background_card, image=imageCardBack)
     canvas.itemconfig(canvas_language, text="English")
     canvas.itemconfig(canvas_word, text=next_word_en)
 
 
 def save_scores():
-    global missing, known
-    missingDf = pandas.DataFrame(missing)
-    missingDf.to_csv("missing_words.csv")
+    missingDf = pandas.DataFrame(data_dict)
+    missingDf.to_csv("missing_words.csv", index=False)
 
     knownDf = pandas.DataFrame(known)
-    knownDf.to_csv("knows_words.csv")
+    knownDf.to_csv("known_words.csv", index=False)
 
 
 # __________GUI SETUP______________________#
@@ -69,7 +68,7 @@ imageCardFront = PhotoImage(file="./images/card_front.png")
 imageCardBack = PhotoImage(file="./images/card_back.png")
 background_card = canvas.create_image(400, 264, image=imageCardFront)
 canvas.grid(column=0, row=0, columnspan=2)
-canvas_language = canvas.create_text(400, 150, text="French", font=LANGUAGE_FONT, fill="black")
+canvas_language = canvas.create_text(400, 150, text="Language", font=LANGUAGE_FONT, fill="black")
 canvas_word = canvas.create_text(400, 263, text="Word", font=WORD_FONT, fill="black")
 
 wrong_icon = PhotoImage(file="./images/wrong.png")
@@ -80,8 +79,7 @@ right_icon = PhotoImage(file="./images/right.png")
 known_button = Button(image=right_icon, command=known_clicked)
 known_button.grid(column=1, row=1)
 
-
-
 print(next_word)
-save_scores()
 screen.mainloop()
+
+save_scores()
