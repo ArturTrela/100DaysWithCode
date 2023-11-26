@@ -3,7 +3,7 @@ import datetime as dt
 import random
 from_google_pass = "apje xplv jdhg urkv"
 my_email = "arturtrela.automation@gmail.com"
-address_email = "trela.artur@gmail.com"
+address_email = "trela.art@gmail.com"
 quotes_list=[]
 now = dt.datetime.now()
 day = now.weekday()
