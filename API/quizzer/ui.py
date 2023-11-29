@@ -38,12 +38,14 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
+        self.canvas.config(bg=CANVA_BG)
         if not self.quiz.still_has_questions():
             tkinter.messagebox.showinfo(title="QUIZ COMPLETE", message="You've completed the quiz\n"
                                         f"Your final score is: {self.quiz.score}/{self.quiz.question_number}")
+            self.true_Button.config(state="disabled")
+            self.wrong_Button.config(state="disabled")
         else :
             self.score_label.config(text=f'Score : {self.quiz.score}')
-            self.canvas.config(bg=CANVA_BG)
             q_text = self.quiz.next_question()
             self.canvas.itemconfig(self.question_text, text=q_text)
 
