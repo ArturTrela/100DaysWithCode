@@ -46,3 +46,4 @@ for pointer in range(0, hours_qty):
         weather_code_list.append(weather_code)
 if len(weather_code_list) > 0:
     send_SMS()
+
