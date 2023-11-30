@@ -1,11 +1,12 @@
 import requests
 from twilio.rest import Client
 hours_qty = 4
+auth = "25eb0ee9901d63377b251f298e0acd86"
 """Rainy localization """
 localization_parameters = {
     "lat": 40.203316,
     "lon": -8.410257,
-    "appid": "25eb0ee9901d63377b251f298e0acd86",
+    "appid": auth,
     "units": "metric",
     "cnt": hours_qty,
 }
@@ -13,7 +14,7 @@ localization_parameters = {
 # localization_parameters = {
 #     "lat": 50.285690,
 #     "lon": 18.875231,
-#     "appid": "25eb0ee9901d63377b251f298e0acd86",
+#     "appid": auth,
 #     "units": "metric",
 #     "cnt": hours_qty,
 # }
@@ -38,8 +39,7 @@ client = Client(account_sid, auth_token)
 
 message = client.messages.create(
   from_='+19562699689',
-  body='Test wysylania wiadomosci SMS za pomoca kodu Pythona -> szykuj mieszek z monetami ;-) . '
-       'Twoj Elephant Developer ;-) ',
+  body='W najbli¿szych godzinach przewidziany jest deszcz - Zabierz parasolkê ',
   to='+48519193352'
 )
 
