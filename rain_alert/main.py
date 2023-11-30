@@ -25,6 +25,7 @@ response = requests.get(API_URL, params=localization_parameters)
 response.raise_for_status()
 to_show = response.json()
 
+
 def send_SMS():
     account_sid = "ACe35debc71d618db5205a60f98130c727"
     auth_token = "897ceea7e411db18dbd7e555e3e4c79b"
@@ -35,8 +36,6 @@ def send_SMS():
         body="??  W najblizszych godzinach przewidziany jest deszcz - Zabierz parasolke ?? ",
         to="+48519193352"
     )
-
-
     print(message.status)
 
 
@@ -47,6 +46,3 @@ for pointer in range(0, hours_qty):
         weather_code_list.append(weather_code)
 if len(weather_code_list) > 0:
     send_SMS()
-
-
-
