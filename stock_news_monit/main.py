@@ -23,10 +23,10 @@ news_parameters = {
 
 
 day_prev_close = 247.680
-two_day_close = 245.236
+two_day_close = 235.236
 absolut_diff = abs(day_prev_close - two_day_close)
-percent_diff = (two_day_close * absolut_diff) / 100
-
+percent_diff = (absolut_diff / day_prev_close) * 100
+print(percent_diff)
 
 def send_SMS():
     account_sid = "ACe35debc71d618db5205a60f98130c727"
