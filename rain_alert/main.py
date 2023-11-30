@@ -1,4 +1,5 @@
 import requests
+from twilio.rest import Client
 hours_qty = 4
 """Rainy localization """
 localization_parameters = {
@@ -31,18 +32,16 @@ for pointer in range(0, hours_qty):
 if len(weather_code_list)>0:
     print("in next 4 hours rain is possible - Take an umbrella")
 
+account_sid = "ACe35debc71d618db5205a60f98130c727"
+auth_token = "897ceea7e411db18dbd7e555e3e4c79b"
+client = Client(account_sid, auth_token)
 
+message = client.messages.create(
+  from_='+19562699689',
+  body='Test wysylania wiadomosci SMS za pomoca kodu Pythona -> szykuj mieszek z monetami ;-) . '
+       'Twoj Elephant Developer ;-) ',
+  to='+48519193352'
+)
 
-# from twilio.rest import Client
-#
-# account_sid = 'ACe35debc71d618db5205a60f98130c727'
-# auth_token = '3cd1f50355d40e1ba7dfa608c812d8dd'
-# client = Client(account_sid, auth_token)
-#
-# message = client.messages.create(
-#   from_='+19562699689',
-#   body='Test wysy³ania wiadomoœci SMS za pomoc¹ kodu Pythona -> szykuj mieszek z monetami ;-) . Twój Elephant Developer ;-) ',
-#   to='+48519193352'
-# )
-#
-# print(message.sid)
+print(message.sid)
+print(message.status)
