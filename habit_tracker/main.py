@@ -1,4 +1,5 @@
 import requests
+import datetime
 TOKEN = "qwertyuiop"
 USERNAME = "arturt"
 GRAPH_ID = "graph1"
@@ -37,17 +38,20 @@ put_params={
 # graph_put_endpoint =f'{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}'
 # graph_put_response = requests.post(url=graph_put_endpoint,json=put_params,headers=headers)
 # print(graph_put_response.text)
+today = datetime.datetime.now()
+
+today = today.strftime("%Y%m%d")
 
 # DELETE
-date = "20231201"
+date = today
 # graph_delete_endpoint = f'{graph_put_endpoint}/{date}'
 # graph_delete_response = requests.delete(graph_delete_endpoint, headers=headers)
 # print(graph_delete_response.text)
 
 # PUT - UPDATE
 update_params ={
-    "quantity": "120",
+    "quantity": "10",
 }
-# graph_update_endpoint = f'{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{date}'
-# graph_update_endpoint = requests.put(graph_update_endpoint,json=update_params,headers=headers)
-# print(graph_update_endpoint.text)
+graph_update_endpoint = f'{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{date}'
+graph_update_endpoint = requests.put(graph_update_endpoint,json=update_params,headers=headers)
+print(graph_update_endpoint.text)
