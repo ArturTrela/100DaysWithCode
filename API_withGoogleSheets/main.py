@@ -19,7 +19,10 @@ headers = {
     "x-app-key": API_KEY,
 
 }
+sheet_headers ={
+    "Authorization": "Bearer 314159ArTuRNgKqwerty2023",
 
+}
 # Take a sentence from user # ( Test query / User input query )
 query = input("Tell me exercise and time")
 # test_query = "Swam for 1 hour"
@@ -29,7 +32,7 @@ body = {
     "query": query,
     "age": "30",
     "gender": "male",
-    "weight_kg": "84",
+    "weight_kg": "82",
     "height_cm": "185",
 }
 
@@ -52,7 +55,7 @@ sheet_params = {
             "calories": workout_calories,
     }
 }
-sheety_response = requests.post(url=SHEETY_END, json=sheet_params)
+sheety_response = requests.post(url=SHEETY_END, json=sheet_params, headers=sheet_headers )
 sheety_response.raise_for_status()
 result_sheets = sheety_response.json()
 print(result_sheets)
