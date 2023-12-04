@@ -1,11 +1,13 @@
 import requests
 import datetime
-
+import os
 # CONSTANTS #
-APP_ID = "2abc9635"
-API_KEY = "36c3ef0d5700ad87439dfbc0d140e0d7"
-API_URL = "https://trackapi.nutritionix.com/v2/natural/exercise"
-SHEETY_END = "https://api.sheety.co/4e668c043186844af25349f9dcd69fdc/myWorkouts/workouts"
+
+APP_ID = os.environ.get("API_ID")
+API_KEY = os.environ.get("API_KEY")
+API_URL = os.environ.get("API_URL")
+SHEETY_END = os.environ.get("SHEETY_END")
+BEARER = os.environ.get("BEARER")
 
 # Take an actual hour and day #
 
@@ -20,7 +22,7 @@ headers = {
 
 }
 sheet_headers ={
-    "Authorization": "Bearer 314159ArTuRNgKqwerty2023",
+    "Authorization":BEARER,
 
 }
 # Take a sentence from user # ( Test query / User input query )
