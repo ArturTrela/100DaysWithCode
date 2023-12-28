@@ -1,0 +1,2 @@
+""" Creating a new destination for next part of Course from Udemy.com """
+""" For HTML , CSS and other FrontEnd files as IDE choice Visual Studio Code """ 
