@@ -1,0 +1,25 @@
+html{
+    background: black;
+    font-family: 'Caveat', cursive;
+    font-family: 'Libre Baskerville', serif;
+    
+}
+
+h1{
+    color: white;
+    text-align: center;
+
+}
+
+#foto{
+    width: 400px;
+    height: 400px;
+    align-self: center;
+    border: 5px solid white;
+    
+}
+
+p{
+    color:white;
+    text-align: center;
+}
