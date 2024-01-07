@@ -2,22 +2,24 @@ from bs4 import BeautifulSoup
 import requests
 
 
-response = requests.get("https://news.ycombinator.com/")
+response = requests.get("https://news.ycombinator.com/news")
 yc_webpage =response.text
 
 soup = BeautifulSoup(yc_webpage, "html.parser")
-article_raw = soup.find( class_="athing")
-id = article_raw.get("id")
-for id in soup:
-    article_title = soup.find(name="span", class_="titleline").text
-    article_upvote = soup.find(name="span", class_="score").text
-    article_link = soup.find(name="href", class_="titleline")
-
-
-print(article_title)
-print(article_upvote)
+articles= soup.find_all( class_="athing")
+articles_text =[]
+articles_list=[]
+for article_tag in articles:
+    article_text = article_tag.getText()
+    articles_list.append(article_text)
+    article_link = article_tag.get("href")
+    articles_list.append(article_link)
+    # article_upvotes = article_tag.get()
+print(article_text)
 print(article_link)
+# print(article_upvotes)
 
-print(article_raw)
-print(id)
+print(articles_text)
+print(articles_list)
+
 
