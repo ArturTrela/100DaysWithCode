@@ -26,7 +26,7 @@ print()
 print(data[data.temp == data.temp.max()])
 
 monday = data[data.day == "Monday"]
-print(monday.condition)
+print(monday.is_on)
 
 # Convert Celsiusz to FarenHeit
 # F = temp*1,8+32
