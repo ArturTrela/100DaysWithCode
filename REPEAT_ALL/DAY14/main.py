@@ -64,6 +64,8 @@ def coin_process():
     total += int(input('How many nickles ?:')) * 0.05
     total += int(input('How many pennies ?:')) * 0.01
     return total
+
+
 def report():
     print(f'Water: {resources['water']}ml')
     print(f'Milk: {resources['milk']}ml')
