@@ -115,4 +115,3 @@ while is_on:
                 print('Not enough money')
 
 
-"""Complete project - statment only add for check connection github from RPi via TeamViewer"""
