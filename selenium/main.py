@@ -1,0 +1,1 @@
+""" File to show how does work library Selenium WebDriver for automation Web browser operation"""
