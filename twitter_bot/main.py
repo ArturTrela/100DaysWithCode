@@ -48,7 +48,7 @@ class InternetSpeedTwitterBot():
         user_input.send_keys(X_EMAIL)
         user_input.send_keys(Keys.ENTER)
         time.sleep(2)
-        pass_input=self.driver.find_element(By.CSS_SELECTOR,'input')
+        pass_input=self.driver.find_element(By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input')
         pass_input.send_keys('Automatyk2024')
         pass_input.send_keys(Keys.ENTER)
 bot = InternetSpeedTwitterBot()
