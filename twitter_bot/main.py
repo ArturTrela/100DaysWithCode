@@ -52,6 +52,6 @@ class InternetSpeedTwitterBot():
         pass_input.send_keys('Automatyk2024')
         pass_input.send_keys(Keys.ENTER)
 bot = InternetSpeedTwitterBot()
-# wynik_testu = bot.get_internet_speed()
+wynik_testu = bot.get_internet_speed()
 wynik_testu = "test"
 bot.tweet_at_provider(wynik_testu)
