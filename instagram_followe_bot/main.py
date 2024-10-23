@@ -1,5 +1,6 @@
 """Instagram follower bot """
 from selenium import webdriver
+from selenium.common import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
@@ -12,6 +13,7 @@ class Instafollower():
         self.opcje.add_experimental_option('detach', True)
         self.driver = webdriver.Chrome(self.opcje)
         self.driver.get('https://www.instagram.com/')
+        self.driver.fullscreen_window()
 
     def cookies_reject(self):
         cookies = self.driver.find_element(By.CSS_SELECTOR,
@@ -19,6 +21,7 @@ class Instafollower():
         cookies.click()
 
     def login(self):
+        self.driver.fullscreen_window()
         login_field = self.driver.find_element(By.CSS_SELECTOR,
                                                '#loginForm > div > div:nth-child(1) > div > label > input')
         time.sleep(1)
@@ -31,22 +34,32 @@ class Instafollower():
         zaloguj_btn = self.driver.find_element(By.CSS_SELECTOR, '#loginForm > div > div:nth-child(3) > button > div')
         zaloguj_btn.click()
         time.sleep(7)
-        zapis_danych = self.driver.find_element(By.XPATH,'//*[@id="mount_0_0_wV"]/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div/div/section/div/button')
+        zapis_danych = self.driver.find_element(By.XPATH,'//button[contains(text(),"Zapisz")]')
         zapis_danych.click()
 
     def find_followers(self):
-        szukaj_btn = self.driver.find_element(By.CSS_SELECTOR,'button')
-        szukaj_btn.click()
-        # szukajka = self.driver.find_element(By.CSS_SELECTOR,
-        #                                     '#mount_0_0_R7 > div > div > div.x9f619.x1n2onr6.x1ja2u2z > div > div > div.x78zum5.xdt5ytf.x1t2pt76.x1n2onr6.x1ja2u2z.x10cihs4 > div.x9f619.xvbhtw8.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1uhb9sk.x1plvlek.xryxfnj.x1c4vz4f.x2lah0s.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1qughib > div.x1gryazu.xh8yej3.x10o80wk.x14k21rp.x17snn68.x6osk4m.x1porb0y.x8vgawa > section > nav > div > header > div > div > div.xq8finb > div > div > div > div > div > input')
-        # szukajka.send_keys('Python Polska', Keys.ENTER)
+        self.driver.get('https://www.instagram.com/python.polska/followers/')
+        time.sleep(5)
+    #     czas na reczne otwarcie listy
 
     def follow(self):
-        pass
+        # all_buttons = self.driver.find_elements(By.CSS_SELECTOR, value='._aano button')
+        all_buttons = self.driver.find_elements(By.XPATH, value='//button[contains(text(), "Obserwuj")]')
+
+        for button in all_buttons:
+            try:
+                button.click()
+                time.sleep(1.1)
+
+            except ElementClickInterceptedException:
+                cancel_button = self.driver.find_element(by=By.XPATH, value="//button[contains(text(), 'Anuluj')]")
+                cancel_button.click()
 
 
 bot = Instafollower()
 time.sleep(2)
 bot.cookies_reject()
 bot.login()
+time.sleep(2)
 bot.find_followers()
+bot.follow()
