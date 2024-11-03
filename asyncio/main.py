@@ -8,7 +8,6 @@ async def fetch_data(delay, id):
     print('Data fetched, id:', id)
     return {"data":"Some data", "id": id} #Return some data
 
-
 async def main():
 
     task1= fetch_data(2,1)

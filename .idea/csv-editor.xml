@@ -3,6 +3,20 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\FlashCard\data\french_words.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\FlashCard\missing_words.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\birthdays_wisher\birthdays.csv">
           <value>
             <Attribute>
@@ -11,6 +25,13 @@
           </value>
         </entry>
         <entry key="\reading_csv\weather_data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\squirrel_in_CentralPark\2018_Central_Park_Squirrel_Census_-_Squirrel_Data_20231104.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
