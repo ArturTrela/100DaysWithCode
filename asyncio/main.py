@@ -1,5 +1,5 @@
 import asyncio
-
+import time
 
 # Define some coroutine that simulates a time-consuming task.
 async def fetch_data(delay, id):
