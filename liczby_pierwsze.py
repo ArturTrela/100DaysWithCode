@@ -73,7 +73,7 @@
 
 import time
 import pandas as pd
-import concurrent.futuresś
+import concurrent.futures
 zakres = 100000
 
 def jest_pierwsza(liczba):
