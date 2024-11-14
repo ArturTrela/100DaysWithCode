@@ -71,7 +71,10 @@ def artur(zakres_max):
 out = artur(zakres)
 print(out)
 
-
+import time
+import pandas as pd
+import concurrent.futures
+zakres = 100000
 
 def jest_pierwsza(liczba):
     if liczba < 2:
