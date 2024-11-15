@@ -7,3 +7,5 @@ print(test_df)
 pivoted_df = test_df.pivot(index='Age',columns='Actor',values='Power')
 
 print(pivoted_df)
+
+""" Ciąg dalszy cwiczen w google Collab"""
