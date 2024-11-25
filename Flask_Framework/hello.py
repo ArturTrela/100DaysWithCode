@@ -11,9 +11,9 @@ def hello_world():
 def bye():
     return 'Bye-Bye - działa'
 
-@app.route('/<name>')
-def greet(name):
-    return f'Hello {name}!'
+@app.route('/<name>/<int:number>')
+def greet(name, number):
+    return f'Hello {name} and you are {number} years old!!'
 
 if __name__ =='__main__':
     app.run()
