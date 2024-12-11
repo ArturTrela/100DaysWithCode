@@ -1,0 +1,100 @@
+/* Ustawienia globalne */
+body {
+    font-family: 'Tahoma', sans-serif;
+    background-color: #D4EBF8;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+    background-color: #1F509A;
+    color: white;
+    height: 25vh;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+/* Animacja przejazdu walut */
+.currency-marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+}
+
+.currency-item {
+    margin-right: 30px;
+}
+
+.sidebar {
+    background-color: #fff;
+    padding: 20px;
+    border-right: 2px solid #E38E49;
+    height: 100%; /* Wydłużenie menu na całą wysokość */
+}
+
+.sidebar-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-content ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-content ul li a {
+    text-decoration: none;
+    color: #1F509A;
+    font-weight: bold;
+}
+
+.sidebar-content ul li a:hover {
+    color: #E38E49;
+}
+
+.main-content {
+    padding: 20px;
+    color: #1F509A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+footer {
+    background-color: #1F509A;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto; /* Wymusza, żeby stopka była na dole */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Animacja banera */
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Responsywność - Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Ukryj boczne menu na urządzeniach mobilnych */
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+}
+
+/* Sidebar - dla dużych ekranów */
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+    }
+    .sidebar-content ul {
+        padding-left: 10px;
+    }
+}

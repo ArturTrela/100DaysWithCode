@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waluty i więcej</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tahoma&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid d-flex flex-column min-vh-100">
+        <!-- Banner -->
+        <div class="banner">
+            <div class="currency-marquee" id="currencyMarquee">
+                {% for currency in currencies %}
+                    <span class="currency-item">
+                        <strong>{{ currency }}</strong>
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Row for Sidebar and Main Content -->
+        <div class="row flex-grow-1">
+            <!-- Sidebar -->
+            <div class="col-12 col-md-2 sidebar">
+                <div class="sidebar-content">
+                    <ul>
+                        <li><a href="{{ url_for('waluty') }}">Waluty</a></li>
+                        <li><a href="#">Metale</a></li>
+                        <li><a href="#">Nieruchomości</a></li>
+                        <li><a href="#">Samochody</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-12 col-md-10 main-content text-center">
+                <h1>To jest strona z walutami</h1>
+                <div class="row">
+                    {% for currency, chart in charts.items() %}
+                        <div class="col-md-6">
+                            <h3>Kurs {{ currency }} z ostatnich 24h</h3>
+                            <img src="data:image/png;base64,{{ chart }}" alt="Wykres kursu {{ currency }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>{{ current_date }}</p>
+            <p>Strona wygenerowana przy użyciu AI</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
