@@ -13,8 +13,11 @@
            </div>
         <div class="content">
             <div class="card">
-                <h2>Title</h2>
-                <p>Post Body</p>
+                {% for row in new %}
+                    <h2>{{ row['title'] }} </h2>
+                    <h4>{{ row['subtitle'] }} </h4>
+                    <p>{{ row['body'] }}</p>
+                {% endfor %}
             </div>
 
     </div>
