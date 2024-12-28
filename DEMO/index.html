@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Layout</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+  <style>
+    .centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      position: relative;
+    }
+    .info-box {
+      display: none;
+      position: absolute;
+      background-color: rgb(192, 19, 149);
+      border: 1px solid black;
+      padding: 10px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="machine.png" alt="Machine" class="centered-image" id="machineImage">
+  <div class="info-box" id="infoBox">
+    <p id="infoText"></p>
+  </div>
+
+  <script>
+    const machineImage = document.getElementById('machineImage');
+    const infoBox = document.getElementById('infoBox');
+    const infoText = document.getElementById('infoText');
+
+    machineImage.addEventListener('mousemove', function(event) {
+      const x = event.offsetX;
+      const y = event.offsetY;
+
+      // Example: Check if the mouse is over the engine part (coordinates are hypothetical)
+      if (x > 50 && x < 250 && y > 100 && y < 400) {
+        infoText.innerText = 'Engine: Current: 10A, Frequency: 50Hz, Voltage: 220V';
+        infoBox.style.display = 'block';
+        infoBox.style.left = event.pageX + 'px';
+        infoBox.style.top = event.pageY + 'px';
+      } else {
+        infoBox.style.display = 'none';
+      }
+    });
+
+    machineImage.addEventListener('mouseleave', function() {
+      
+    });
+  </script>
+</body>
+</html>
