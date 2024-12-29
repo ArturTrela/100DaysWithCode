@@ -1,4 +1,3 @@
-from django.forms import EmailField
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField
@@ -11,6 +10,10 @@ app.secret_key = "nalesnik"
 class MyForm(FlaskForm):
     email = StringField('email')
     password = StringField('password')
+
+@app.route('/success')
+def isLogin():
+    return "Zalogowano"
 
 @app.route('/login')
 def login():
