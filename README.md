@@ -6,5 +6,5 @@ During coding in Pycharm I use a GIT to menage a code version and teach how this
 After completed this course next will be a Flask and Django Framework 
 
 Flask module -> in progress
-
+Wordpress -> 04.01.2025
 Thanks for reading 
